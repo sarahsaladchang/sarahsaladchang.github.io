@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>US on Sarah&#39;s personal blog</title>
+    <link>https://sarahsaladchang.github.io/tags/us/</link>
+    <description>Recent content in US on Sarah&#39;s personal blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 17 Sep 2023 10:07:47 +0800</lastBuildDate><atom:link href="https://sarahsaladchang.github.io/tags/us/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TEST </title>
+      <link>https://sarahsaladchang.github.io/blog/test/</link>
+      <pubDate>Sun, 17 Sep 2023 10:07:47 +0800</pubDate>
+      
+      <guid>https://sarahsaladchang.github.io/blog/test/</guid>
+      <description>hellow word
+one two three in this world, I hope I can be happy.</description>
+    </item>
+    
+  </channel>
+</rss>

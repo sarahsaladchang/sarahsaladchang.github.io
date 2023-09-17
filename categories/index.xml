@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Sarah&#39;s personal blog</title>
+    <link>https://sarahsaladchang.github.io/categories/</link>
+    <description>Recent content in Categories on Sarah&#39;s personal blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 17 Sep 2023 10:07:47 +0800</lastBuildDate><atom:link href="https://sarahsaladchang.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>美劇</title>
+      <link>https://sarahsaladchang.github.io/categories/%E7%BE%8E%E5%8A%87/</link>
+      <pubDate>Sun, 17 Sep 2023 10:07:47 +0800</pubDate>
+      
+      <guid>https://sarahsaladchang.github.io/categories/%E7%BE%8E%E5%8A%87/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go Language</title>
+      <link>https://sarahsaladchang.github.io/categories/go-language/</link>
+      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
+      
+      <guid>https://sarahsaladchang.github.io/categories/go-language/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
