@@ -3,112 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sarah Chang | Home</title>
+  <meta name="description" content="用 60 秒認識 Sarah Chang：具 5+ 年經驗的 Senior System Analyst，專注需求轉譯、系統整合、AI 與跨團隊交付。">
+  <title>Sarah Chang | Interactive Portfolio</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
-<body class="site-page" data-page="home">
-  <header>
-    <div class="container nav">
-      <a class="logo" href="/home/">Sarah Chang</a>
-      <nav class="nav-links" aria-label="主要導覽">
-        <a class="nav-link" data-page="about" href="/about/">About</a>
-        <a class="nav-link" data-page="skills" href="/skills/">Skills</a>
-        <a class="nav-link" data-page="projects" href="/projects/">Projects</a>
-        <a class="nav-link" data-page="case-studies" href="/case-studies/">Case Studies</a>
-        <a class="nav-link" data-page="beyond-work" href="/beyond-work/">Beyond Work</a>
-        <a class="nav-link" data-page="contact" href="/contact/">Contact</a>
-      </nav>
-      <select class="mobile-select" aria-label="切換頁面">
-        <option value="/home/" selected>Home</option>
-        <option value="/about/" >About</option>
-        <option value="/skills/" >Skills</option>
-        <option value="/projects/" >Projects</option>
-        <option value="/case-studies/" >Case Studies</option>
-        <option value="/beyond-work/" >Beyond Work</option>
-        <option value="/contact/" >Contact</option>
-      </select>
-    </div>
+<body data-page="home">
+  <a class="skip-link" href="#main-content">跳到主要內容</a>
+  <header class="site-header">
+    <a class="brand" href="/home/" aria-label="Sarah Chang 首頁"><span class="brand-text">SARAH CHANG.</span></a>
+    <nav class="desktop-nav" aria-label="主要導覽">
+      <a href="/home/" aria-current="page">Home</a>
+      <a href="/projects/">Work Evidence</a>
+      <a href="/about/">About Me</a>
+    </nav>
+    <a class="resume-link resume-plain" href="/Sarah_Resume.pdf" target="_blank" rel="noreferrer">Resume <span aria-hidden="true">↗</span></a>
   </header>
 
-  <main>
-    <section id="home" class="page active">
-          <div class="hero">
-            <div class="container hero-grid">
-              <div>
-                <p class="hero-label">Technical Product &amp; Solution PM</p>
-                <h1>Turning complexity into<br><span>clear digital products.</span></h1>
-                <p>
-                  I am a product-focused System Analyst with 5+ years of combined experience across project delivery, system planning, and digital solutions. I specialize in translating complex operational needs into structured workflows, technical specifications, data-driven platforms, and user-centered solutions.
-                </p>
-                <p>
-                  Across 20+ projects for public-sector and enterprise organizations, I have collaborated with engineers, designers, users, and stakeholders to deliver scalable digital platforms, improve operational efficiency, and transform complex requirements into practical, maintainable products.
-                </p>
-                <div class="hero-hashtags" aria-label="Core strengths">
-                  <span>Data Integration</span>
-                  <span>Workflow Design</span>
-                  <span>Digital Product Delivery</span>
-                </div>
-                <div class="cta-row">
-                  <a class="btn btn-primary" href="/case-studies/">View Case Studies</a>
-                  <a class="btn btn-outline" href="/contact/">Contact Me</a>
-                  <a class="btn btn-text" href="https://www.linkedin.com/in/sarah-c-432a0b1ba" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-                </div>
-    
-              </div>
-    
-              <aside class="profile-card">
-                <div class="profile-top">
-                <div class="metrics">
-                  <div class="metric">
-                    <strong>20+</strong>
-                    <span>Projects Delivered</span>
-                  </div>
-                  <div class="metric">
-                    <strong>6+</strong>
-                    <span>Organizations Supported</span>
-                  </div>
-                  <div class="metric">
-                    <strong>100%</strong>
-                    <span>On-Time Project Delivery</span>
-                  </div>
-                  <div class="metric">
-                    <strong>100M+</strong>
-                    <span>Data Records Processed</span>
-                  </div>
-                  <div class="metric">
-                    <strong>50K+</strong>
-                    <span>Concurrent Users Supported</span>
-                  </div>
-                  <div class="metric">
-                    <strong>20+</strong>
-                    <span>Training Sessions Delivered</span>
-                  </div>
-                </div>
-              </aside>
-            </div>
+  <main id="main-content" class="home-shell home-console">
+    <div class="console-grid">
+      <section class="console-main" aria-labelledby="hero-title">
+        <header class="console-hero">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Guided interview console</p>
+          <h1 id="hero-title">Meet Sarah in<br><span>60</span> seconds.</h1>
+          <p class="hero-intro">Senior System Analyst bridging operations, systems, data, and applied AI to deliver real-world impact.</p>
+        </header>
+
+        <section class="interview-section console-interview" aria-labelledby="lens-title">
+          <div class="compact-heading"><h2 id="lens-title">Choose your perspective</h2></div>
+          <div class="lens-tabs" role="tablist" aria-label="選擇面試官視角">
+            <button class="lens-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="interview-panel" data-lens="hr">
+              <span class="lens-copy"><strong>HR / Recruiter</strong><small>Role fit, experience, impact</small></span>
+            </button>
+            <button class="lens-tab" type="button" role="tab" aria-selected="false" aria-controls="interview-panel" data-lens="manager" tabindex="-1">
+              <span class="lens-copy"><strong>Hiring Manager</strong><small>Delivery, leadership, outcomes</small></span>
+            </button>
+            <button class="lens-tab" type="button" role="tab" aria-selected="false" aria-controls="interview-panel" data-lens="technical" tabindex="-1">
+              <span class="lens-copy"><strong>Technical Interviewer</strong><small>Architecture, tools, depth</small></span>
+            </button>
           </div>
-          <div class="home-featured">
-            <div class="container">
-              <div class="section-title">
-                <h2>Featured Case Studies</h2>
-                <p>Selected projects demonstrating how I transform complex requirements into scalable systems, data-driven workflows, and practical digital solutions.</p>
-              </div>
-              <div class="home-featured-grid">
-                <a class="home-case-shortcut" href="/case-studies/case-02/"><strong>Case 01</strong><h3 class="compact-title">Operational Data Integration and Reporting Automation</h3><span>SQL / Data Integration / Process Automation / Operational Reporting</span></a>
-                <a class="home-case-shortcut" href="/case-studies/case-03/"><strong>Case 02</strong><h3>Real-Time Operations Monitoring Platform</h3><span>DashboardDesign / Data Visualization / GIS</span></a>
-                <a class="home-case-shortcut" href="/case-studies/case-04/"><strong>Case 03</strong><h3>AI Solution Evaluation and Performance Benchmarking</h3><span>AI Evaluation / RAG / Performance Benchmarking / MCP</span></a>
-                <a class="home-case-shortcut" href="/case-studies/case-05/"><strong>Case 04</strong><h3>Workflow Standardization and User Adoption</h3><span>Workflow / Process Improvement / Training / Change Management</span></a>
-              </div>
+
+          <article id="interview-panel" class="question-card" role="tabpanel" aria-live="polite">
+            <div class="question-topline">
+              <p id="question-label">HR / RECRUITER · QUESTION 1 OF 2</p>
+              <div class="question-progress" aria-hidden="true"><span id="question-progress-bar"></span></div>
             </div>
-          </div>
+            <h3 id="question-title">Tell me about yourself.</h3>
+            <p id="question-answer" class="question-answer">我是 Sarah，一位具 5+ 年經驗、以產品思維工作的 Senior System Analyst。我的核心價值是把模糊的使用者需求，轉成工程團隊可以執行的系統規格，並一路協作到整合、UAT、上線與使用者採用。</p>
+            <div class="question-actions">
+              <button id="next-question" class="button button-primary violet-button" type="button">Next question <span aria-hidden="true">→</span></button>
+              <a id="evidence-link" class="button button-link" href="/projects/#workforce">View evidence <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <p class="curation-note">Curated answers. Verified evidence. Your perspective.</p>
         </section>
+      </section>
+
+      <aside class="evidence-card glance-card" aria-labelledby="evidence-title">
+        <div class="evidence-header">
+          <p class="section-kicker">Evidence at a glance</p>
+          <span id="evidence-count">01 / 02</span>
+        </div>
+        <h2 id="evidence-title">Why this answer holds up</h2>
+        <ul id="evidence-list" class="evidence-list glance-list">
+          <li><strong>5+ years</strong><span>System analysis and product delivery</span></li>
+          <li><strong>End-to-end</strong><span>Requirements → integration → UAT → adoption</span></li>
+          <li><strong>Cross-functional</strong><span>Users, engineers, QA, data, AI &amp; GIS teams</span></li>
+        </ul>
+        <div class="evidence-footer">
+          <span>Explore full work evidence</span>
+          <a href="/projects/" aria-label="前往 Work Evidence">→</a>
+        </div>
+      </aside>
+    </div>
   </main>
 
-  <footer>
-    <div class="container">© 2026 Sarah Chang</div>
-  </footer>
-
-  <script src="/assets/js/layout.js"></script>
-
+  <footer class="site-footer home-footer"><p>Designed as a conversation, backed by evidence.</p><p>© 2026 Sarah Chang</p></footer>
+  <script src="/assets/js/layout.js?v=3" defer></script>
 </body>
 </html>

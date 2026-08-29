@@ -3,154 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sarah Chang | About</title>
+  <meta name="description" content="Sarah Chang 的背景、職涯路徑與工作之外的經歷。">
+  <title>About Me | Sarah Chang</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
-<body class="site-page" data-page="about">
-  <header>
-    <div class="container nav">
-      <a class="logo" href="/home/">Sarah Chang</a>
-      <nav class="nav-links" aria-label="主要導覽">
-        <a class="nav-link" data-page="about" href="/about/">About</a>
-        <a class="nav-link" data-page="skills" href="/skills/">Skills</a>
-        <a class="nav-link" data-page="projects" href="/projects/">Projects</a>
-        <a class="nav-link" data-page="case-studies" href="/case-studies/">Case Studies</a>
-        <a class="nav-link" data-page="beyond-work" href="/beyond-work/">Beyond Work</a>
-        <a class="nav-link" data-page="contact" href="/contact/">Contact</a>
-      </nav>
-      <select class="mobile-select" aria-label="切換頁面">
-        <option value="/home/" >Home</option>
-        <option value="/about/" selected>About</option>
-        <option value="/skills/" >Skills</option>
-        <option value="/projects/" >Projects</option>
-        <option value="/case-studies/" >Case Studies</option>
-        <option value="/beyond-work/" >Beyond Work</option>
-        <option value="/contact/" >Contact</option>
-      </select>
-    </div>
+<body data-page="about">
+  <a class="skip-link" href="#main-content">跳到主要內容</a>
+  <header class="site-header">
+    <a class="brand" href="/home/" aria-label="Sarah Chang 首頁"><span class="brand-text">SARAH CHANG.</span></a>
+    <nav class="desktop-nav" aria-label="主要導覽">
+      <a href="/home/">Home</a>
+      <a href="/projects/">Work Evidence</a>
+      <a href="/about/" aria-current="page">About Me</a>
+    </nav>
+    <a class="resume-link resume-plain" href="/Sarah_Resume.pdf" target="_blank" rel="noreferrer">Resume <span aria-hidden="true">↗</span></a>
   </header>
 
-  <main>
-    <section id="about" class="page active about-page">
-      <div class="page-hero about-hero">
-        <div class="container">
-          <h1>About <span>Me</span></h1>
-          <p>How I think · How I work · What I can contribute</p>
-        </div>
+  <main id="main-content" class="page-shell">
+    <header class="page-hero about-hero">
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> The person behind the work</p>
+      <h1>Built by systems.<br>Moved by curiosity.</h1>
+      <p>我的路徑不是單一路線，而是一條持續把工程思維、城市議題、技術交付與跨文化經驗接在一起的線。</p>
+    </header>
+
+    <section class="career-path" aria-labelledby="path-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">Career path</p><h2 id="path-title">How the pieces connect</h2></div>
+      </div>
+      <ol class="path-list">
+        <li><span>01</span><div><h3>Aerospace &amp; Systems Engineering</h3><p>建立結構化拆解問題、理解複雜系統與跨領域協作的底層思維。</p></div></li>
+        <li><span>02</span><div><h3>Smart City Development</h3><p>把工程視角延伸到城市、GIS、資料與公共議題，理解技術必須回到真實使用情境。</p></div></li>
+        <li><span>03</span><div><h3>System Analyst</h3><p>走進軟體交付現場，負責需求轉譯、流程、API／資料整合、UAT 與跨團隊落地。</p></div></li>
+        <li class="is-current"><span>04</span><div><h3>Technical Product / Program Direction</h3><p>下一步希望承擔更完整的產品與技術協作責任，讓複雜方案更清楚地被決策、交付與採用。</p></div></li>
+      </ol>
+    </section>
+
+    <section class="life-evidence" aria-labelledby="life-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">Beyond the job title</p><h2 id="life-title">Experience that shapes how I work</h2></div>
+        <p class="section-note">工作之外，也有可被帶回團隊的能力。</p>
       </div>
 
-      <div class="container content-section about-content">
-        <section class="about-section about-philosophy" aria-label="My Approach to System Integration and Product Innovation">
-          <div class="about-section-heading">
-            <span>01</span>
-            <h2>My Approach to System Integration and Product Innovation</h2>
+      <div class="life-grid">
+        <article class="life-card">
+          <div class="life-image"><img src="/assets/images/beyond-work/beyond-07.jpg" alt="Sarah 在馬爾他的語言學習生活" loading="lazy"></div>
+          <div class="life-copy">
+            <p class="project-number">MALTA · LANGUAGE LEARNING</p>
+            <h3>Communicate before everything feels familiar.</h3>
+            <p>在全英文與多文化環境裡重新學習表達、傾聽與適應。它讓我更能在資訊不完整時主動澄清，也更自在地與不同背景的人合作。</p>
+            <div class="skill-row"><span>English</span><span>Cultural adaptability</span></div>
           </div>
-          <div class="philosophy-panel">
-            <p>I believe the most valuable technology products are built through strong system integration and creative problem-solving.</p>
-            <p>A solid understanding of the software development lifecycle is essential, but successful delivery also requires the ability to look beyond individual symptoms, identify the root cause of a problem, understand which stakeholders and systems are involved, and bring the right people together to develop the right solution.</p>
-            <p>I approach each project by connecting business needs, user workflows, data, system architecture, and operational processes into a coherent solution. Rather than treating functions as isolated features, I focus on how different components work together to create a reliable, maintainable, and practical product.</p>
-            <p>Creativity is equally important. I actively explore how emerging AI technologies can be applied to improve user experiences, automate complex workflows, and introduce capabilities that differentiate a product from conventional systems. My goal is not simply to adopt new technology, but to use it purposefully to create solutions that are useful, distinctive, and capable of delivering meaningful value.</p>
-          </div>
-        </section>
+        </article>
 
-        <section class="about-section" aria-label="What I Bring">
-          <div class="about-section-heading">
-            <span>02</span>
-            <h2>What I Bring</h2>
+        <article class="life-card life-card-reverse">
+          <div class="life-image"><img src="/assets/images/beyond-work/beyond-06.jpg" alt="Sarah 參與國際交流活動" loading="lazy"></div>
+          <div class="life-copy">
+            <p class="project-number">INTERNATIONAL EXCHANGE</p>
+            <h3>Make complex ideas travel across borders.</h3>
+            <p>從國際交流到 OGC 跨國專案，我學會先建立共同語言，再對齊資料、介面與交付期待；英文不只是表達工具，也是協作的一部分。</p>
+            <div class="skill-row"><span>Global collaboration</span><span>Technical storytelling</span></div>
           </div>
-          <div class="bring-grid">
-            <article class="bring-card">
-              <h3>Product and Requirement Planning</h3>
-              <p>I uncover business and user needs through stakeholder discussions, workflow analysis, data review, and requirement workshops. I then translate ambiguous requests into clearly defined product scope, priorities, user journeys, functional requirements, and acceptance criteria.</p>
-            </article>
-            <article class="bring-card">
-              <h3>System and Data Thinking</h3>
-              <p>I understand how product decisions connect with system architecture, databases, APIs, data flows, operational rules, and integration constraints. This enables me to communicate effectively with technical teams and make more practical product decisions.</p>
-            </article>
-            <article class="bring-card">
-              <h3>Cross-Functional Delivery</h3>
-              <p>I coordinate stakeholders across business, engineering, design, QA, and management teams. I help establish shared priorities, manage scope and risks, resolve delivery blockers, and maintain visibility throughout the project lifecycle.</p>
-            </article>
-            <article class="bring-card">
-              <h3>Continuous Improvement</h3>
-              <p>I use testing results, operational data, stakeholder feedback, and user behavior to identify opportunities for improvement. My goal is not only to complete delivery, but also to improve adoption, system performance, workflow efficiency, and long-term maintainability.</p>
-            </article>
-          </div>
-        </section>
+        </article>
 
-        <section class="about-section" aria-label="How I Work">
-          <div class="about-section-heading">
-            <span>03</span>
-            <h2>How I Work</h2>
+        <article class="life-card">
+          <div class="life-image"><img src="/assets/images/beyond-work/beyond-22.jpg" alt="Sarah 擔任活動主持人" loading="lazy"></div>
+          <div class="life-copy">
+            <p class="project-number">EVENT HOSTING</p>
+            <h3>Read the room. Keep the moment moving.</h3>
+            <p>主持需要清楚表達、即時反應，也需要感受現場節奏。這些能力同樣出現在需求工作坊、產品展示與跨團隊會議裡。</p>
+            <div class="skill-row"><span>Facilitation</span><span>Audience awareness</span></div>
           </div>
-          <div class="work-steps">
-            <article class="work-step">
-              <strong>01</strong>
-              <div>
-                <h3>Discover Business and User Problems</h3>
-                <p>I begin by understanding the operational context behind the request. Through stakeholder workshops, user discussions, workflow mapping, and data analysis, I identify the actual user problems, business objectives, technical limitations, and success criteria.</p>
-              </div>
-            </article>
-            <article class="work-step">
-              <strong>02</strong>
-              <div>
-                <h3>Translate Needs into a Delivery Plan</h3>
-                <p>I convert insights into structured product scope, feature priorities, user flows, wireframes, system specifications, API and database requirements, acceptance criteria, and an actionable delivery roadmap.</p>
-              </div>
-            </article>
-            <article class="work-step">
-              <strong>03</strong>
-              <div>
-                <h3>Deliver and Improve Outcomes</h3>
-                <p>I work with cross-functional teams to manage scope, schedule, quality, dependencies, and delivery risks. After implementation, I collect feedback and review operational results to improve adoption, performance, usability, and execution efficiency.</p>
-              </div>
-            </article>
-          </div>
-        </section>
+        </article>
 
-        <section class="about-section about-two-column" aria-label="Experience Highlights and Background">
-          <div class="about-list-panel">
-            <div class="about-section-heading compact">
-              <span>04</span>
-              <h2>Experience Highlights</h2>
+        <article class="life-card life-card-reverse">
+          <div class="life-image image-carousel" data-carousel>
+            <img class="is-visible" src="/assets/images/beyond-work/beyond-03.jpg" alt="Sarah 參加馬拉松活動" loading="lazy">
+            <img src="/assets/images/beyond-work/beyond-24.jpg" alt="Sarah 參加接力賽" loading="lazy">
+            <div class="carousel-controls">
+              <button type="button" data-carousel-prev aria-label="上一張照片">←</button>
+              <span data-carousel-status>1 / 2</span>
+              <button type="button" data-carousel-next aria-label="下一張照片">→</button>
             </div>
-            <ul class="quiet-highlight-list">
-              <li>5+ years of combined experience across project delivery, system planning, and digital solutions.</li>
-              <li>20+ software and digital transformation projects delivered.</li>
-              <li>100% on-time project delivery across managed contract milestones.</li>
-              <li>NT$5M–30M project scale across public-sector and enterprise initiatives.</li>
-              <li>100M+ data records processed across data-intensive platforms.</li>
-              <li>Experience working with engineers, designers, QA specialists, users, senior stakeholders, and government agencies.</li>
-              <li>Domain exposure across AI, digital twins, IoT, geospatial data integration, enterprise systems, and large-scale public digital platforms.</li>
-            </ul>
           </div>
-
-          <div class="about-list-panel">
-            <div class="about-section-heading compact">
-              <span>05</span>
-              <h2>Background</h2>
-            </div>
-            <dl class="background-list">
-              <div><dt>Education</dt><dd>M.S. in Smart City Development, Feng Chia University<br>B.S. in Aerospace and Systems Engineering, Feng Chia University</dd></div>
-              <div><dt>Language</dt><dd>English: C1-level proficiency<br>Toeic: 785</dd></div>
-              <div><dt>Certifications & Focus</dt><dd>Project Management<br>Google Data Analytics<br>Product Development<br>Technical Program Execution<br>Data-driven Innovation</dd></div>
-            </dl>
+          <div class="life-copy">
+            <p class="project-number">MARATHON &amp; RELAY</p>
+            <h3>Long goals are built one pace at a time.</h3>
+            <p>長跑教我分配節奏、持續修正，也教我在團隊接力中把自己的那一段可靠地完成。這是我面對長週期專案的方式。</p>
+            <div class="skill-row"><span>Long-term focus</span><span>Continuous iteration</span><span>Team relay</span></div>
           </div>
-        </section>
-
-        <section class="about-cta" aria-label="Explore case studies">
-          <p>Explore how I apply this approach across real-world projects.</p>
-          <a class="btn btn-primary" href="/case-studies/">View Case Studies</a>
-        </section>
+        </article>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">© 2026 Sarah Chang</div>
-  </footer>
-
-  <script src="/assets/js/layout.js"></script>
-
+  <footer class="site-footer"><p>Systems thinker. Curious human. Reliable teammate.</p><p>© 2026 Sarah Chang</p></footer>
+  <script src="/assets/js/layout.js?v=3" defer></script>
 </body>
 </html>
