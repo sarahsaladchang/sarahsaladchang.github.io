@@ -1,14 +1,26 @@
 import { useEffect, useRef, useState } from "react";
-import { workforceDispatchCaseStudy } from "./caseStudyData";
+import {
+  workforceDispatchCaseStudy,
+  disasterResponseAgentCaseStudy,
+  nantouDisasterPlatformCaseStudy,
+  aiVisionTrainingCaseStudy,
+} from "./caseStudyData";
 
 const asset = (path) => `${import.meta.env.BASE_URL}assets/${path}`;
 
 const RESUME_URL = "https://drive.google.com/file/d/1lEeUQ3xrAZBdvIQgVl2GiIg2yynbtsz4/view?usp=sharing";
 
+const caseStudies = {
+  [workforceDispatchCaseStudy.id]: workforceDispatchCaseStudy,
+  [disasterResponseAgentCaseStudy.id]: disasterResponseAgentCaseStudy,
+  [nantouDisasterPlatformCaseStudy.id]: nantouDisasterPlatformCaseStudy,
+  [aiVisionTrainingCaseStudy.id]: aiVisionTrainingCaseStudy,
+};
+
 const folders = {
   work: {
     title: "Case Studies",
-    subtitle: "5 items",
+    subtitle: "4 items",
     images: [
       asset("thumbnails/folder-work-01.webp"),
       asset("thumbnails/folder-work-02.webp"),
@@ -22,24 +34,22 @@ const folders = {
         caseStudy: "workforce-dispatch",
       },
       {
-        title: "AI-assisted Knowledge Experience",
+        title: "災害應變平台與 AI Agent 助手",
         image: asset("project-ai-ops.webp"),
-        tags: ["AI Application", "RAG Evaluation"],
+        tags: ["AI Agent", "RAG 評測", "GIS 視覺化"],
+        caseStudy: "disaster-response-ai",
       },
       {
-        title: "Enterprise System Modernization",
+        title: "縣市級防災情資整合平台（南投防災情資整合平台）",
         image: asset("project-system.avif"),
-        tags: ["8 Modules", "50+ Functions"],
+        tags: ["資料整合", "Node.js API", "營運儀表板"],
+        caseStudy: "nantou-disaster-platform",
       },
       {
-        title: "Cross-functional Delivery Toolkit",
+        title: "AI 影像辨識與自動訓練平台",
         image: asset("project-automation.avif"),
-        tags: ["UAT", "Launch"],
-      },
-      {
-        title: "Product Discovery & Adoption",
-        image: asset("project-research.avif"),
-        tags: ["Research", "+12% Adoption"],
+        tags: ["AI 影像辨識", "模型生命週期", "自動再訓練"],
+        caseStudy: "ai-vision-training",
       },
     ],
   },
@@ -485,10 +495,11 @@ function CaseStudyWindow({ study, onClose }) {
         >
           <div className="case-study-track" style={{ transform: `translateX(-${activeSlide * 100}%)` }}>
             {study.slides.map((slide, slideIndex) => {
-              const images = slide.images ?? [
+              const images = (slide.images ?? [
                 { src: slide.image, alt: slide.imageAlt },
                 ...(slide.secondaryImage ? [{ src: slide.secondaryImage, alt: "" }] : []),
-              ];
+              ]).filter((img) => img && img.src);
+              const hasImages = images.length > 0;
 
               return (
                 <article className="case-study-slide" key={slide.chapter} aria-hidden={slide.chapter !== study.slides[activeSlide].chapter}>
@@ -504,18 +515,26 @@ function CaseStudyWindow({ study, onClose }) {
                     )}
                     {slide.callout && <blockquote>{slide.callout}</blockquote>}
                   </div>
-                  <div className={`case-study-visual image-count-${images.length}`}>
-                    {images.map((image) => (
-                      <figure key={image.src}>
-                        <img
-                          src={image.src}
-                          alt={image.alt}
-                          loading={slideIndex === activeSlide ? "eager" : "lazy"}
-                          decoding="async"
-                        />
-                        {image.label && <figcaption>{image.label}</figcaption>}
-                      </figure>
-                    ))}
+                  <div className={`case-study-visual ${hasImages ? `image-count-${images.length}` : "is-empty"}`}>
+                    {hasImages ? (
+                      images.map((image) => (
+                        <figure key={image.src}>
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            loading={slideIndex === activeSlide ? "eager" : "lazy"}
+                            decoding="async"
+                          />
+                          {image.label && <figcaption>{image.label}</figcaption>}
+                        </figure>
+                      ))
+                    ) : (
+                      <div className="case-study-placeholder">
+                        <span className="placeholder-tag">Chapter {slide.chapter.split(" · ")[0]}</span>
+                        <p>專案架構與視覺整理中</p>
+                        <small>Images Coming Soon</small>
+                      </div>
+                    )}
                   </div>
                 </article>
               );
@@ -524,24 +543,31 @@ function CaseStudyWindow({ study, onClose }) {
         </div>
 
         <div className="case-study-thumbnails" role="tablist" aria-label="Jump to a chapter">
-          {study.slides.map((slide, index) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={index === activeSlide}
-              className={index === activeSlide ? "is-active" : ""}
-              onClick={() => goTo(index)}
-              key={slide.chapter}
-            >
-              <img
-                src={slide.thumbnail ?? (slide.images?.[0] ?? { src: slide.image }).src}
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
-              <span>{slide.chapter.replace(/^\d+ · /, "")}</span>
-            </button>
-          ))}
+          {study.slides.map((slide, index) => {
+            const thumbSrc = slide.thumbnail ?? (slide.images?.[0]?.src ?? slide.image);
+            return (
+              <button
+                type="button"
+                role="tab"
+                aria-selected={index === activeSlide}
+                className={index === activeSlide ? "is-active" : ""}
+                onClick={() => goTo(index)}
+                key={slide.chapter}
+              >
+                {thumbSrc ? (
+                  <img
+                    src={thumbSrc}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div className="thumbnail-empty">{slide.chapter.split(" · ")[0]}</div>
+                )}
+                <span>{slide.chapter.replace(/^\d+ · /, "")}</span>
+              </button>
+            );
+          })}
         </div>
       </section>
     </div>
@@ -852,7 +878,12 @@ export function App() {
       )}
       {guestOpen && <GuestBook onClose={() => setGuestOpen(false)} />}
       {resumeOpen && <ResumeWindow onClose={() => setResumeOpen(false)} />}
-      {activeCaseStudy === workforceDispatchCaseStudy.id && <CaseStudyWindow study={workforceDispatchCaseStudy} onClose={() => setActiveCaseStudy(null)} />}
+      {activeCaseStudy && caseStudies[activeCaseStudy] && (
+        <CaseStudyWindow
+          study={caseStudies[activeCaseStudy]}
+          onClose={() => setActiveCaseStudy(null)}
+        />
+      )}
       {previewPhoto && (
         <PhotoLightbox
           photo={previewPhoto}
