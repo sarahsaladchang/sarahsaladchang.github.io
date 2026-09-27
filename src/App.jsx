@@ -8,14 +8,14 @@ const folders = {
     title: "Case Studies",
     subtitle: "5 items",
     images: [
-      asset("case-study-workforce/03-operational-dashboard.png"),
-      asset("project-ai-ops.webp"),
-      asset("project-system.avif"),
+      asset("thumbnails/folder-work-01.webp"),
+      asset("thumbnails/folder-work-02.webp"),
+      asset("thumbnails/folder-work-03.webp"),
     ],
     items: [
       {
         title: "Enterprise Mobile Workforce & Dispatch Platform",
-        image: asset("case-study-workforce/03-operational-dashboard.png"),
+        image: asset("case-study-workforce/card-workforce.webp"),
         tags: ["System Analysis", "Dispatch", "Enterprise Platform"],
         caseStudy: "workforce-dispatch",
       },
@@ -46,86 +46,86 @@ const folders = {
     subtitle: "13 items",
     kind: "activities",
     images: [
-      asset("beyond-work-01.jpg"),
-      asset("beyond-work-06.jpg"),
-      asset("beyond-work-22.jpg"),
+      asset("thumbnails/folder-beyond-01.webp"),
+      asset("thumbnails/folder-beyond-02.webp"),
+      asset("thumbnails/folder-beyond-03.webp"),
     ],
     items: [
       {
         title: "Dadushan Trail Run",
-        images: [asset("beyond-work-01.jpg"), asset("beyond-work-02.jpg")],
+        images: [asset("beyond-work-01.webp"), asset("beyond-work-02.webp")],
         description: "Trail running requires constant adjustment across terrain, energy, and weather. It helps me stay focused, make decisions under uncertainty, and keep moving with control.",
         tags: ["Trail Run", "Endurance", "Adaptability"],
       },
       {
         title: "Sun Moon Lake Marathon",
-        images: [asset("beyond-work-03.jpg"), asset("beyond-work-04.jpg"), asset("beyond-work-05.jpg")],
+        images: [asset("beyond-work-03.webp"), asset("beyond-work-04.webp"), asset("beyond-work-05.webp")],
         description: "A long-distance race works like a roadmap: it requires clear goals, milestones, pacing, refueling, and constant strategy adjustment along the way.",
         tags: ["Marathon", "Roadmap", "Persistence"],
       },
       {
         title: "Taiwan Water Corporation International Exchange",
-        images: [asset("beyond-work-06.jpg")],
+        images: [asset("beyond-work-06.webp")],
         description: "Participating in cross-cultural public service exchange helped me understand infrastructure, service communication, and practical collaboration from different perspectives.",
         tags: ["International Exchange", "Public Service", "Communication"],
       },
       {
         title: "Malta Language School",
-        images: [asset("beyond-work-07.jpg"), asset("beyond-work-08.jpg"), asset("beyond-work-09.jpg"), asset("beyond-work-10.jpg")],
+        images: [asset("beyond-work-07.webp"), asset("beyond-work-08.webp"), asset("beyond-work-09.webp"), asset("beyond-work-10.webp")],
         description: "Studying abroad in Malta helped me practice English communication, adapt to different cultures, and become more proactive when collaborating with international teams.",
         tags: ["Language Learning", "International", "Communication"],
       },
       {
         title: "Hehuan North Peak",
-        images: [asset("beyond-work-11.jpg"), asset("beyond-work-12.jpg")],
+        images: [asset("beyond-work-11.webp"), asset("beyond-work-12.webp")],
         description: "Hiking teaches me to observe routes, weather, and physical condition carefully while making risk-aware decisions in real environments.",
         tags: ["Mountain", "Outdoor", "Observation"],
       },
       {
         title: "Hupao Shuangxi Trail Run",
-        images: [asset("beyond-work-13.jpg"), asset("beyond-work-14.jpg"), asset("beyond-work-15.jpg")],
+        images: [asset("beyond-work-13.webp"), asset("beyond-work-14.webp"), asset("beyond-work-15.webp")],
         description: "Running through mountain trails and stream crossings helps me practice focus, route judgment, and steady progress across changing terrain.",
         tags: ["Trail Run", "Focus", "Terrain"],
       },
       {
         title: "Taichung Half Marathon",
-        images: [asset("beyond-work-16.jpg"), asset("beyond-work-17.jpg")],
+        images: [asset("beyond-work-16.webp"), asset("beyond-work-17.webp")],
         description: "Half-marathon training helps me plan practice within limited time, review progress, and adjust pace through trackable iteration.",
         tags: ["Half Marathon", "Iteration", "Discipline"],
       },
       {
         title: "Nantou Zhongxing New Village Marathon",
-        images: [asset("beyond-work-18.jpg")],
+        images: [asset("beyond-work-18.webp")],
         description: "Running a local race reminds me that consistency matters as much as the finish line, and that steady commitment shapes the outcome.",
         tags: ["Local Race", "Consistency", "Focus"],
       },
       {
         title: "ELLE RUN",
-        images: [asset("beyond-work-19.jpg"), asset("beyond-work-20.jpg")],
+        images: [asset("beyond-work-19.webp"), asset("beyond-work-20.webp")],
         description: "City running helps me maintain a regular training rhythm while practicing pacing, energy management, and self-discipline in a goal-oriented setting.",
         tags: ["Running", "Routine", "Momentum"],
       },
       {
         title: "ZEPPO Half Marathon",
-        images: [asset("beyond-work-21.jpg")],
+        images: [asset("beyond-work-21.webp")],
         description: "Every half marathon is a recalibration of pacing, refueling, and real-time condition management, connecting planning with feedback from the field.",
         tags: ["Half Marathon", "Pacing", "Reflection"],
       },
       {
         title: "2026 Annual Party Hosting",
-        images: [asset("beyond-work-22.jpg")],
+        images: [asset("beyond-work-22.webp")],
         description: "Hosting an annual event required clear communication, pacing, audience awareness, and quick responses while keeping the team engaged.",
         tags: ["Hosting", "Communication", "Engagement"],
       },
       {
         title: "Metropolitan Park Relay Race",
-        images: [asset("beyond-work-23.jpg")],
+        images: [asset("beyond-work-23.webp")],
         description: "Relay racing turns individual pacing into a shared delivery plan, strengthening handoff discipline, team awareness, and mutual accountability.",
         tags: ["Relay Race", "Teamwork", "Handoff"],
       },
       {
         title: "VISOGE Night Run Party Taichung",
-        images: [asset("beyond-work-24.jpg")],
+        images: [asset("beyond-work-24.webp")],
         description: "Running in changing weather and low-light conditions reinforced adaptability, energy management, and the habit of staying composed when conditions shift.",
         tags: ["Night Run", "Adaptability", "Resilience"],
       },
@@ -362,7 +362,7 @@ function FinderWindow({ folder, onClose, onOpenCaseStudy }) {
           {folder.items.map((item) => {
             const content = (
               <>
-              {item.images ? <ActivityCarousel item={item} /> : <img src={item.image} alt="" />}
+              {item.images ? <ActivityCarousel item={item} /> : <img src={item.image} alt="" loading="lazy" decoding="async" />}
               <h3 title={item.title}>{item.title}</h3>
               {item.description && <p className="activity-description">{item.description}</p>}
               <div className="tag-row">
@@ -439,7 +439,7 @@ function CaseStudyWindow({ study, onClose }) {
           }}
         >
           <div className="case-study-track" style={{ transform: `translateX(-${activeSlide * 100}%)` }}>
-            {study.slides.map((slide) => {
+            {study.slides.map((slide, slideIndex) => {
               const images = slide.images ?? [
                 { src: slide.image, alt: slide.imageAlt },
                 ...(slide.secondaryImage ? [{ src: slide.secondaryImage, alt: "" }] : []),
@@ -462,7 +462,12 @@ function CaseStudyWindow({ study, onClose }) {
                   <div className={`case-study-visual image-count-${images.length}`}>
                     {images.map((image) => (
                       <figure key={image.src}>
-                        <img src={image.src} alt={image.alt} />
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          loading={slideIndex === activeSlide ? "eager" : "lazy"}
+                          decoding="async"
+                        />
                         {image.label && <figcaption>{image.label}</figcaption>}
                       </figure>
                     ))}
@@ -483,7 +488,12 @@ function CaseStudyWindow({ study, onClose }) {
               onClick={() => goTo(index)}
               key={slide.chapter}
             >
-              <img src={(slide.images?.[0] ?? { src: slide.image }).src} alt="" />
+              <img
+                src={slide.thumbnail ?? (slide.images?.[0] ?? { src: slide.image }).src}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
               <span>{slide.chapter.replace(/^\d+ · /, "")}</span>
             </button>
           ))}
