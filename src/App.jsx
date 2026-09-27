@@ -840,16 +840,7 @@ export function App() {
         <Draggable initial={{ x: 487, y: 340 }} onActivate={() => setActiveFolder("beyond")} label="Open Beyond Work">
           <FolderIcon folder={folders.beyond} />
         </Draggable>
-
-        <Draggable initial={{ x: 682, y: 340 }} onActivate={() => setPlayerOpen(true)} label="Open Learning Playlist">
-          <div className="desktop-icon">
-            <div className="music-icon"><img src={asset("music-cover.webp")} alt="" /></div>
-            <div className="icon-label"><h3>Learning Log</h3><p>3 items</p></div>
-          </div>
-        </Draggable>
       </section>
-
-      <MusicPlayer open={playerOpen} setOpen={setPlayerOpen} />
 
       {activeFolder && (
         <FinderWindow
