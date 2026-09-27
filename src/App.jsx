@@ -3,6 +3,8 @@ import { workforceDispatchCaseStudy } from "./caseStudyData";
 
 const asset = (path) => `${import.meta.env.BASE_URL}assets/${path}`;
 
+const RESUME_URL = "https://drive.google.com/file/d/1lEeUQ3xrAZBdvIQgVl2GiIg2yynbtsz4/view?usp=sharing";
+
 const folders = {
   work: {
     title: "Case Studies",
@@ -282,7 +284,7 @@ function GuestBookIcon() {
 
 function ResumeIcon() {
   return (
-    <div className="desktop-icon">
+    <div className="desktop-icon" title="Open resume.pdf in Google Drive">
       <div className="resume-icon">
         <img src={asset("resume.webp")} alt="Resume preview" />
       </div>
@@ -615,7 +617,18 @@ function ResumeWindow({ onClose }) {
         <header className="finder-toolbar">
           <WindowControls onClose={onClose} />
           <div className="finder-title"><strong>resume.pdf</strong><span>Preview</span></div>
-          <button className="print-button" onClick={() => window.print()}>Print / Save PDF</button>
+          <a
+            className="print-button"
+            href={RESUME_URL}
+            target="_blank"
+            rel="noreferrer"
+            style={{ textDecoration: "none" }}
+          >
+            Open in Google Drive ↗
+          </a>
+          <button className="print-button" onClick={() => window.print()} style={{ marginLeft: "8px" }}>
+            Print / Save PDF
+          </button>
         </header>
         <article className="resume-paper">
           <p className="eyebrow">TECHNICAL SOLUTION PM · DIGITAL TRANSFORMATION</p>
@@ -630,7 +643,11 @@ function ResumeWindow({ onClose }) {
             <li>Supported enterprise platforms spanning 8 modules, 50+ functions, and more than 1M records.</li>
             <li>Improved feature adoption by 12% and SQL Stored Procedure performance by approximately 10%.</li>
           </ul>
-          <p className="resume-footnote">Replace the sample contact links and connect your final resume PDF before publishing.</p>
+          <p className="resume-footnote">
+            <a href={RESUME_URL} target="_blank" rel="noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>
+              View or download full resume.pdf on Google Drive ↗
+            </a>
+          </p>
         </article>
       </section>
     </div>
@@ -812,7 +829,11 @@ export function App() {
           <GuestBookIcon />
         </Draggable>
 
-        <Draggable initial={{ x: 780, y: 96 }} onActivate={() => setResumeOpen(true)} label="Open resume preview">
+        <Draggable
+          initial={{ x: 780, y: 96 }}
+          onActivate={() => window.open(RESUME_URL, "_blank", "noopener,noreferrer")}
+          label="Open resume.pdf in Google Drive"
+        >
           <ResumeIcon />
         </Draggable>
 
