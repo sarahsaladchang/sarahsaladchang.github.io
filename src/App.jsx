@@ -293,19 +293,21 @@ function ResumeIcon() {
   );
 }
 
-function ActivityCarousel({ item }) {
+function ActivityCarousel({ item, onPreviewPhoto }) {
   const [activePhoto, setActivePhoto] = useState(0);
   const swipeStart = useRef(null);
   const images = item.images || [item.image];
   const hasMultiplePhotos = images.length > 1;
 
-  const movePhoto = (direction) => {
+  const movePhoto = (direction, event) => {
+    if (event) event.stopPropagation();
     setActivePhoto((current) => (current + direction + images.length) % images.length);
   };
 
   return (
     <div
       className="activity-media"
+      onClick={() => onPreviewPhoto && onPreviewPhoto(item, activePhoto)}
       onPointerDown={(event) => {
         if (event.pointerType !== "mouse") swipeStart.current = event.clientX;
       }}
@@ -315,18 +317,48 @@ function ActivityCarousel({ item }) {
         swipeStart.current = null;
         if (Math.abs(distance) > 44) movePhoto(distance > 0 ? -1 : 1);
       }}
+      title="Click to view full photo"
     >
-      <img
-        src={images[activePhoto]}
-        alt={`${item.title} photo ${activePhoto + 1} of ${images.length}`}
-        loading="lazy"
-        decoding="async"
-      />
+      {images.map((src, index) => (
+        <img
+          key={src}
+          src={src}
+          alt={`${item.title} photo ${index + 1} of ${images.length}`}
+          className={index === activePhoto ? "active-photo" : "hidden-photo"}
+          decoding="async"
+        />
+      ))}
       {hasMultiplePhotos && (
         <>
-          <button type="button" className="activity-nav previous" onClick={() => movePhoto(-1)} aria-label={`Previous ${item.title} photo`}>‹</button>
-          <button type="button" className="activity-nav next" onClick={() => movePhoto(1)} aria-label={`Next ${item.title} photo`}>›</button>
+          <button
+            type="button"
+            className="activity-nav previous"
+            onClick={(event) => movePhoto(-1, event)}
+            aria-label={`Previous ${item.title} photo`}
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            className="activity-nav next"
+            onClick={(event) => movePhoto(1, event)}
+            aria-label={`Next ${item.title} photo`}
+          >
+            ›
+          </button>
           <span className="activity-counter">{activePhoto + 1} / {images.length}</span>
+          <div className="activity-dots" aria-hidden="true">
+            {images.map((_, dotIdx) => (
+              <span
+                key={dotIdx}
+                className={`activity-dot ${dotIdx === activePhoto ? "is-active" : ""}`}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setActivePhoto(dotIdx);
+                }}
+              />
+            ))}
+          </div>
         </>
       )}
     </div>
@@ -341,7 +373,7 @@ function WindowControls({ onClose }) {
   );
 }
 
-function FinderWindow({ folder, onClose, onOpenCaseStudy }) {
+function FinderWindow({ folder, onClose, onOpenCaseStudy, onPreviewPhoto }) {
   return (
     <div className="modal-layer" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
       <section
@@ -362,7 +394,11 @@ function FinderWindow({ folder, onClose, onOpenCaseStudy }) {
           {folder.items.map((item) => {
             const content = (
               <>
-              {item.images ? <ActivityCarousel item={item} /> : <img src={item.image} alt="" loading="lazy" decoding="async" />}
+              {item.images ? (
+                <ActivityCarousel item={item} onPreviewPhoto={onPreviewPhoto} />
+              ) : (
+                <img src={item.image} alt="" loading="lazy" decoding="async" />
+              )}
               <h3 title={item.title}>{item.title}</h3>
               {item.description && <p className="activity-description">{item.description}</p>}
               <div className="tag-row">
@@ -625,16 +661,76 @@ function MusicPlayer({ open, setOpen }) {
   );
 }
 
+function PhotoLightbox({ photo, onClose, onNav }) {
+  const images = photo.images || [photo.image];
+  const hasMultiple = images.length > 1;
+
+  return (
+    <div
+      className="lightbox-layer"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${photo.title} photo preview`}
+      onClick={onClose}
+    >
+      <div className="lightbox-content" onClick={(event) => event.stopPropagation()}>
+        <button type="button" className="lightbox-close" onClick={onClose} aria-label="Close photo preview">
+          ×
+        </button>
+        <div className="lightbox-image-wrap">
+          <img src={images[photo.index]} alt={`${photo.title} photo`} className="lightbox-image" />
+          {hasMultiple && (
+            <>
+              <button
+                type="button"
+                className="lightbox-nav-btn previous"
+                onClick={() => onNav(-1)}
+                aria-label="Previous photo"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="lightbox-nav-btn next"
+                onClick={() => onNav(1)}
+                aria-label="Next photo"
+              >
+                ›
+              </button>
+            </>
+          )}
+        </div>
+        <footer className="lightbox-footer">
+          <div className="lightbox-info">
+            <strong>{photo.title}</strong>
+            {photo.description && <p>{photo.description}</p>}
+          </div>
+          {hasMultiple && (
+            <span className="lightbox-counter">
+              {photo.index + 1} / {images.length}
+            </span>
+          )}
+        </footer>
+      </div>
+    </div>
+  );
+}
+
 export function App() {
   const [activeFolder, setActiveFolder] = useState(null);
   const [guestOpen, setGuestOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [playerOpen, setPlayerOpen] = useState(false);
   const [activeCaseStudy, setActiveCaseStudy] = useState(null);
+  const [previewPhoto, setPreviewPhoto] = useState(null);
 
   useEffect(() => {
     const onKeyDown = (event) => {
       if (event.key === "Escape") {
+        if (previewPhoto) {
+          setPreviewPhoto(null);
+          return;
+        }
         if (activeCaseStudy) {
           setActiveCaseStudy(null);
           return;
@@ -644,10 +740,24 @@ export function App() {
         setResumeOpen(false);
         setPlayerOpen(false);
       }
+      if (previewPhoto && (previewPhoto.images?.length > 1 || (previewPhoto.image && previewPhoto.images))) {
+        const total = previewPhoto.images ? previewPhoto.images.length : 1;
+        if (event.key === "ArrowLeft") {
+          setPreviewPhoto((prev) => ({
+            ...prev,
+            index: (prev.index - 1 + total) % total,
+          }));
+        } else if (event.key === "ArrowRight") {
+          setPreviewPhoto((prev) => ({
+            ...prev,
+            index: (prev.index + 1) % total,
+          }));
+        }
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [activeCaseStudy]);
+  }, [activeCaseStudy, previewPhoto]);
 
   return (
     <main className="desktop-shell">
@@ -718,11 +828,25 @@ export function App() {
           folder={folders[activeFolder]}
           onClose={() => setActiveFolder(null)}
           onOpenCaseStudy={setActiveCaseStudy}
+          onPreviewPhoto={(item, index) => setPreviewPhoto({ ...item, index })}
         />
       )}
       {guestOpen && <GuestBook onClose={() => setGuestOpen(false)} />}
       {resumeOpen && <ResumeWindow onClose={() => setResumeOpen(false)} />}
       {activeCaseStudy === workforceDispatchCaseStudy.id && <CaseStudyWindow study={workforceDispatchCaseStudy} onClose={() => setActiveCaseStudy(null)} />}
+      {previewPhoto && (
+        <PhotoLightbox
+          photo={previewPhoto}
+          onClose={() => setPreviewPhoto(null)}
+          onNav={(dir) => {
+            const total = previewPhoto.images ? previewPhoto.images.length : 1;
+            setPreviewPhoto((prev) => ({
+              ...prev,
+              index: (prev.index + dir + total) % total,
+            }));
+          }}
+        />
+      )}
     </main>
   );
 }
