@@ -98,8 +98,6 @@ const folders = {
         images: [asset("beyond-work-18.webp")],
         description: "Running a local race reminds me that consistency matters as much as the finish line, and that steady commitment shapes the outcome.",
         tags: ["Local Race", "Consistency", "Focus"],
-        orientation: "portrait",
-        aspectRatio: "3 / 4",
       },
       {
         title: "ELLE RUN",
@@ -124,18 +122,12 @@ const folders = {
         images: [asset("beyond-work-23.webp")],
         description: "Relay racing turns individual pacing into a shared delivery plan, strengthening handoff discipline, team awareness, and mutual accountability.",
         tags: ["Relay Race", "Teamwork", "Handoff"],
-        orientation: "portrait",
-        aspectRatio: "2 / 3",
-        tall: true,
       },
       {
         title: "VISOGE Night Run Party Taichung",
         images: [asset("beyond-work-24.webp")],
         description: "Running in changing weather and low-light conditions reinforced adaptability, energy management, and the habit of staying composed when conditions shift.",
         tags: ["Night Run", "Adaptability", "Resilience"],
-        orientation: "portrait",
-        aspectRatio: "2 / 3",
-        tall: true,
       },
     ],
   },
@@ -312,12 +304,9 @@ function ActivityCarousel({ item, onPreviewPhoto }) {
     setActivePhoto((current) => (current + direction + images.length) % images.length);
   };
 
-  const isPortrait = item.orientation === "portrait";
-
   return (
     <div
-      className={`activity-media ${isPortrait ? "is-portrait" : ""} ${item.tall ? "is-tall" : ""}`}
-      style={item.aspectRatio ? { aspectRatio: item.aspectRatio } : undefined}
+      className="activity-media"
       onClick={() => onPreviewPhoto && onPreviewPhoto(item, activePhoto)}
       onPointerDown={(event) => {
         if (event.pointerType !== "mouse") swipeStart.current = event.clientX;
@@ -436,9 +425,7 @@ function FinderWindow({ folder, onClose, onOpenCaseStudy, onPreviewPhoto }) {
 
             return (
               <article
-                className={`project-file ${item.description ? "activity-card" : ""} ${
-                  item.orientation === "portrait" ? "is-portrait" : ""
-                }`}
+                className={`project-file ${item.description ? "activity-card" : ""}`}
                 key={item.title}
               >
                 {content}
