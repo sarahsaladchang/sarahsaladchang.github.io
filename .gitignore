@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+.openai/
+AGENTS.md
+design-qa*.md
+qa-*.png
+reference/
+work/
+
