@@ -12,7 +12,7 @@ export const workforceDispatchCaseStudy = {
       thumbnail: asset("thumbnails/thumb-01.webp"),
       images: [
         {
-          src: asset("03-operational-dashboard.webp"),
+          src: asset("09-dashboard-annotations.webp"),
           alt: "Operational dashboard for the enterprise workforce dispatch platform",
           label: "Operational dashboard",
         },
@@ -127,21 +127,16 @@ export const workforceDispatchCaseStudy = {
       body: "The platform converted a manual assignment process into a trackable, testable, and reportable operating workflow. Rollout included test-case preparation, regression testing, UAT, SOPs, training support, and operational handover across mobile and administrative modules.",
       thumbnail: asset("thumbnails/thumb-07.webp"),
       images: [
-        {
-          src: asset("09-dashboard-annotations.webp"),
-          alt: "Annotated disaster dispatch dashboard with map, timeline, and status panels",
-          label: "Operational dashboard and field reporting",
-        },
-        {
-          src: asset("04-training-management.webp"),
-          alt: "Administrative training course management interface",
-          label: "Administrative module",
-        },
-        {
-          src: asset("03-operational-dashboard.webp"),
-          alt: "Workforce dispatch operations dashboard",
-          label: "Live operational view",
-        },
+          {
+            src: asset("04-training-management.webp"),
+            alt: "Administrative training course management interface",
+            label: "Administrative module",
+          },
+          {
+            src: asset("03-operational-dashboard.webp"),
+            alt: "Workforce dispatch operations dashboard",
+            label: "Live operational view",
+          },
       ],
       insights: [
         ["8 major modules", "Requirements, integration, testing, and rollout across the verified functional scope."],
