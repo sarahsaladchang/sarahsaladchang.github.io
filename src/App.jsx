@@ -17,7 +17,7 @@ const folders = {
     items: [
       {
         title: "Enterprise Mobile Workforce & Dispatch Platform",
-        image: asset("case-study-workforce/card-workforce.webp"),
+        image: asset("case-study-workforce/08-responsive-prototype.webp"),
         tags: ["System Analysis", "Dispatch", "Enterprise Platform"],
         caseStudy: "workforce-dispatch",
       },
